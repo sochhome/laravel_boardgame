@@ -28,10 +28,15 @@ RUN chmod -R 775 storage bootstrap/cache database
 # Expose Render port
 EXPOSE 10000
 
-# Run artisan commands at runtime (NOT during build)
-CMD php artisan key:generate --force && \
-    php artisan migrate --force && \
+# ENTRYPOINT: Create .env, run artisan, start server
+CMD ["/bin/sh", "-c", "\
+    if [ ! -f .env ]; then \
+        cp .env.example .env; \
+    fi && \
+    php artisan key:generate --force && \
+    php artisan migrate --force || true && \
     php artisan config:cache && \
     php artisan route:cache && \
     php artisan view:cache && \
-    php artisan serve --host=0.0.0.0 --port=10000
+    php artisan serve --host=0.0.0.0 --port=10000 \
+"]
