@@ -4,13 +4,13 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BoardgameController;
 use App\Http\Controllers\AuthController;
 
-//Route::get('/', function () {
-//   return view('welcome');
-//});
-Route::get('/', [BoardgameController::class, 'index'])->name('boardgames.index');
 // Route::get('/', function () {
-//	return 'Hello Jos';
+//   return view('welcome');
 // });
+Route::get('/', [BoardgameController::class, 'index'])->name('home');
+//Route::get('/', function () {
+//	return 'Hello Jos';
+//});
 
 Route::get('/intro', function () {
 	return view('hello');
