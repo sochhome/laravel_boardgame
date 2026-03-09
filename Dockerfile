@@ -7,8 +7,11 @@ RUN apt-get update && apt-get install -y \
 # Install Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
-# Set working directory
 WORKDIR /app
+
+# Install Node dependencies first
+COPY package.json package-lock.json ./
+RUN npm install
 
 # Copy project files
 COPY . .
@@ -17,7 +20,7 @@ COPY . .
 RUN composer install --no-dev --optimize-autoloader
 
 # Build Vite assets
-RUN npm install && npm run build
+RUN npm run build
 
 # Ensure SQLite file exists
 RUN mkdir -p database && touch database/database.sqlite
@@ -25,10 +28,11 @@ RUN mkdir -p database && touch database/database.sqlite
 # Fix permissions
 RUN chmod -R 775 storage bootstrap/cache database
 
-# Expose Render port
+# Clear caches to avoid stale Vite manifest
+RUN php artisan config:clear && php artisan route:clear && php artisan view:clear
+
 EXPOSE 10000
 
-# ENTRYPOINT: Create .env, run artisan, start server
 CMD ["/bin/sh", "-c", "\
     if [ ! -f .env ]; then \
         cp .env.example .env; \
