@@ -1,0 +1,225 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #c0ebe9;
+  color: #333;
+}
+
+/* --- Navigation Bar Update --- */
+header {
+  background: #ffffff;
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+nav {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center; /* Vertically centers items */
+  justify-content: space-between; /* Pushes H1 to left and Links to right */
+}
+
+/* Container for navigation links */
+nav .nav-links {
+  display: flex;
+  gap: 1.5rem;
+
+}
+
+nav a {
+  text-decoration: none;
+  color: #4f46e5;
+  font-weight: 800;
+  transition: color 0.2s;
+}
+
+nav a:hover {
+  color: #c273cb;
+}
+nav .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;          /* consistent height */
+  padding: 0 16px;       /* consistent padding */
+  font-size: 1rem;
+  line-height: 1;        /* prevents tall buttons */
+  border: none;          /* removes default button border */
+  cursor: pointer;
+}
+/* -----------------------------------
+   Custom Container
+----------------------------------- */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+/* -----------------------------------
+   Card Component
+----------------------------------- */
+.card {
+  background: #ffffff;
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  /* Layout: Title Left, Button Right */
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  margin-bottom: 1rem;
+
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+}
+
+/* -----------------------------------
+   Highlight Box
+----------------------------------- */
+.highlight {
+  background: #eef2ff; /* indigo-50 */
+  border-right: 4px solid #4f46e5; /* Moved border to right side */
+  border-left: none;
+  /*  border-left: 4px solid #4f46e5; /* indigo-600 */ 
+  padding: 1rem 1.25rem;
+  border-radius: 0.5rem;
+  color: #3730a3; /* indigo-800 */
+  font-weight: 500;
+}
+
+/* -----------------------------------
+   Button Styles
+----------------------------------- */
+.btn {
+  display: inline-block;
+  background: #4f46e5; /* indigo-600 */
+  color: white;
+  /* padding: 0.6rem 1.2rem; */
+  font-size: 1.125rem; /* matches h5 */
+  padding: 10px 18px;
+  /*border-radius: 0.5rem;*/
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.btn:hover {
+  background: #4338ca; /* indigo-700 */
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+/* -----------------------------------
+   Headings (H1–H6)
+----------------------------------- */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  color: #1e293b; /* slate-800 */
+  margin-bottom: 0.75rem;
+}
+
+h1 { font-size: 2.25rem; }
+h2 { font-size: 1.875rem; }
+h3 { font-size: 1.5rem; }
+h4 { font-size: 1.25rem; }
+h5 { font-size: 1.125rem; }
+h6 { font-size: 1rem; }
+
+.card h5 {
+  display: inline-block;
+  margin-right: 1rem;
+}
+
+form div {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+form label {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+form input {
+  padding: 0.5rem;
+  border: 1px solid #cbd5e1; /* slate-300 */
+  border-radius: 0.375rem;
+  width: 100%;
+  max-width: 300px;
+
+}
+
+.boardgame-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-family: Arial, sans-serif;
+}
+
+/* Header styling */
+.boardgame-table thead th {
+    background: #4a90e2;      /* Blue header */
+    color: white;
+    padding: 12px 16px;
+    text-align: left;
+    font-size: 15px;
+}
+
+/* Table cells */
+.boardgame-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Alternating row colors */
+.boardgame-table tbody tr:nth-child(odd) {
+    background: #f9f9f9;
+}
+
+.boardgame-table tbody tr:nth-child(even) {
+    background: #ffffff;
+}
+
+/* Hover effect */
+.boardgame-table tbody tr:hover {
+    background: #eef5ff;
+}
+
+/* Boardgame icon column */
+.boardgame-table .icon {
+    font-size: 22px;
+}
+
+/* Highlight for cheap games */
+.highlight {
+    background: #fff4d6 !important;
+}
+
+/* View button */
+.view-btn {
+    padding: 6px 12px;
+    background: #4a90e2;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.view-btn:hover {
+    background: #357ab8;
+}
